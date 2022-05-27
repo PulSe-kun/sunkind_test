@@ -1,0 +1,1 @@
+export { default as Details_dialog } from "./details-dialog/index.vue"

@@ -1,0 +1,6 @@
+export { default as NewAdd_dialog } from "./newAdd-dialog/index.vue"
+export { default as Compile_dialog } from "./compile-dialog/index.vue"
+export { default as New_material_type } from "./new_material_type/index.vue"
+export { default as Compile_material_type } from "./compile_material_type/index.vue"
+export { default as Import_material } from "./import_material/index.vue"
+export { default as Import_materialData } from "./import_material/import_materialData.vue"

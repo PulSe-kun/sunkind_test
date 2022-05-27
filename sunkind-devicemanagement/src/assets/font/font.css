@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SourceHanSansSC-Medium';
+    src: url('./SourceHanSansSC-Medium.otf');
+}
+
+@font-face {
+    font-family: 'SourceHanSansSC-Normal';
+    src: url('./SourceHanSansSC-Normal.otf');
+}

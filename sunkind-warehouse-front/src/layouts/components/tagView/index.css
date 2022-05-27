@@ -1,0 +1,37 @@
+.tab {
+  margin: 0 -16px;
+  padding: 0 16px;
+  font-size: 14px;
+  user-select: none;
+  transition: all 0.2s;
+}
+.tab .title {
+  display: inline-block;
+  margin-right: 10px;
+  height: 100%;
+}
+.tab span {
+  font-size: 14px;
+}
+.tabs-head {
+  margin: 0 auto;
+}
+.tabs-head .tabs-container {
+  margin: 0 auto;
+  transition: top, left 0.2s;
+}
+.tabs-head .tabs-container /deep/ .ant-tabs-bar {
+  border: none;
+  margin: 0 !important;
+}
+ /deep/ .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
+  background: #585858 !important;
+  color: #fff !important;
+}
+ /deep/ .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab {
+  border-radius: 10px 10px 0 0;
+  border: none;
+  font-size: 16px;
+  background: #f2f2f2;
+  color: #000;
+}

@@ -1,0 +1,51 @@
+{
+  "id": "2518068",
+  "name": "仓库管理系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18311019",
+      "name": "叉 ",
+      "font_class": "cha1",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "7551345",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "1350112",
+      "name": "头像",
+      "font_class": "photo",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "7160380",
+      "name": " 库存",
+      "font_class": "kucun",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "11134708",
+      "name": "考勤统计",
+      "font_class": "kaoqintongji",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "13268324",
+      "name": "资料",
+      "font_class": "ziliao",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    }
+  ]
+}

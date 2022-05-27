@@ -1,0 +1,267 @@
+@primary                : #2964FF !important;
+@tabColor               : #2964FF !important;
+@radioColor             : #CB9657 !important;
+
+//primary按钮
+@primary-style-normal   : #2964FF !important;
+@primary-style-hover    : #4C7DFF !important;
+@primary-style-active   : #0E48DF !important;
+@primary-style-disabled : #2964FF !important;
+// default按钮
+@default-style-normal   : #2964FF !important;
+@default-style-hover    : #80A1F7 !important;
+@default-style-active   : #033EDB !important;
+@default-style-disabled : #2964FF !important;
+
+// link按钮
+@link-style-normal   : #2964FF !important;
+@link-style-hover    : #739AFF !important;
+@link-style-active   : #0340E3 !important;
+@link-style-disabled : #2964FF !important;
+// cancel按钮
+@cancel-style-normal   : #D9D9D9 !important;
+@cancel-style-hover    : #A4A4A4 !important;
+@cancel-style-active   : #515151 !important;
+@cancel-style-disabled : #D9D9D9 !important;
+// danger按钮
+@danger-style-normal   : #ED0000 !important;
+@danger-style-hover    : #FF6363 !important;
+@danger-style-active   : #A61F1F !important;
+@danger-style-disabled : #ED0000 !important;
+
+.primary-style {
+    background-color: @primary-style-normal;
+    border-color    : @primary-style-normal;
+    color           : #fff !important;
+}
+
+.primary-style:hover,
+.primary-style:focus {
+    background-color: @primary-style-hover;
+    border-color    : @primary-style-hover;
+    color           : #fff !important;
+}
+
+.primary-style:active,
+.primary-style.active {
+    background-color: @primary-style-active;
+    border-color    : @primary-style-active;
+    color           : #fff !important;
+}
+
+
+.primary-style-disabled,
+.primary-style.disabled,
+.primary-style[disabled],
+.primary-style-disabled:hover,
+.primary-style.disabled:hover,
+.primary-style[disabled]:hover,
+.primary-style-disabled:focus,
+.primary-style.disabled:focus,
+.primary-style[disabled]:focus,
+.primary-style-disabled:active,
+.primary-style.disabled:active,
+.primary-style[disabled]:active,
+.primary-style-disabled.active,
+.primary-style.disabled.active,
+.primary-style[disabled].active {
+    background-color: @primary-style-disabled;
+    border-color    : @primary-style-disabled;
+    color           : #fff !important;
+    opacity         : 0.3;
+}
+
+
+.default-style {
+    background-color: #fff !important;
+    border-color    : @default-style-normal;
+    color           : #201BA2 !important;
+}
+
+.default-style:hover,
+.default-style:focus {
+    background-color: #fff !important;
+    border-color    : @default-style-hover;
+    color           : #7772F2 !important;
+}
+
+.default-style:active,
+.default-style.active {
+    background-color: #fff !important;
+    border-color    : @default-style-active;
+    color           : #0C077C !important;
+}
+
+.default-style-disabled,
+.default-style.disabled,
+.default-style[disabled],
+.default-style-disabled:hover,
+.default-style.disabled:hover,
+.default-style[disabled]:hover,
+.default-style-disabled:focus,
+.default-style.disabled:focus,
+.default-style[disabled]:focus,
+.default-style-disabled:active,
+.default-style.disabled:active,
+.default-style[disabled]:active,
+.default-style-disabled.active,
+.default-style.disabled.active,
+.default-style[disabled].active {
+    background-color: #fff !important;
+    border-color    : @default-style-disabled;
+    color           : #201BA2 !important;
+    opacity         : 0.3;
+}
+
+.link-style {
+    color: @link-style-normal  !important;
+}
+
+.link-style:hover {
+    color: @link-style-hover  !important;
+}
+
+.link-style:active {
+    color: @link-style-active  !important;
+}
+
+.link-style[disabled] {
+    color  : @link-style-disabled  !important;
+    opacity: 0.3;
+}
+
+.cancel-style {
+    background-color: #fff !important;
+    border-color    : @cancel-style-hover;
+    color           : #BFBFBF !important;
+}
+
+.cancel-style:hover,
+.cancel-style:focus {
+    background-color: #fff !important;
+    border-color    : @cancel-style-hover;
+    color           : #A4A4A4 !important;
+}
+
+.cancel-style:active,
+.cancel-style.active {
+    background-color: #fff !important;
+    border-color    : @cancel-style-active;
+    color           : #515151 !important;
+}
+
+.cancel-style-disabled,
+.cancel-style.disabled,
+.cancel-style[disabled],
+.cancel-style-disabled:hover,
+.cancel-style.disabled:hover,
+.cancel-style[disabled]:hover,
+.cancel-style-disabled:focus,
+.cancel-style.disabled:focus,
+.cancel-style[disabled]:focus,
+.cancel-style-disabled:active,
+.cancel-style.disabled:active,
+.cancel-style[disabled]:active,
+.cancel-style-disabled.active,
+.cancel-style.disabled.active,
+.cancel-style[disabled].active {
+    background-color: #fff !important;
+    border-color    : @cancel-style-disabled;
+    color           : #BFBFBF !important;
+    opacity         : 0.3;
+}
+
+.danger-style {
+    background-color: #fff !important;
+    border-color    : @danger-style-hover;
+    color           : #ED0000 !important;
+}
+
+.danger-style:hover,
+.danger-style:focus {
+    background-color: #fff !important;
+    border-color    : @danger-style-hover;
+    color           : #FF7F7F !important;
+}
+
+.danger-style:active,
+.danger-style.active {
+    background-color: #fff !important;
+    border-color    : @danger-style-active;
+    color           : #A61F1F !important;
+}
+
+.danger-style-disabled,
+.danger-style.disabled,
+.danger-style[disabled],
+.danger-style-disabled:hover,
+.danger-style.disabled:hover,
+.danger-style[disabled]:hover,
+.danger-style-disabled:focus,
+.danger-style.disabled:focus,
+.danger-style[disabled]:focus,
+.danger-style-disabled:active,
+.danger-style.disabled:active,
+.danger-style[disabled]:active,
+.danger-style-disabled.active,
+.danger-style.disabled.active,
+.danger-style[disabled].active {
+    background-color: #fff !important;
+    border-color    : @danger-style-disabled;
+    color           : #ED0000 !important;
+    opacity         : 0.3;
+}
+
+/deep/.ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected {
+    background-color: transparent !important;
+    color           : #40a9ff;
+}
+
+/deep/.ant-select-tree li .ant-select-tree-node-content-wrapper.ant-select-tree-node-selected {
+    background-color: transparent !important;
+    color           : #40a9ff;
+}
+
+/deep/.ant-tabs-nav .ant-tabs-tab:hover,
+/deep/.ant-tabs-nav .ant-tabs-tab-active {
+    color: @tabColor;
+}
+
+/deep/.ant-tabs-ink-bar {
+    background-color: @tabColor;
+}
+
+/deep/.ant-table-thead>tr>th {
+    font-weight: bold !important;
+}
+
+.dialog {
+    overflow: auto !important;
+}
+
+/deep/.ant-drawer-mask {
+    min-height: 1080px;
+}
+
+.dialog /deep/.ant-form-item-label label {
+    color: #999999 !important;
+
+}
+
+.more .ant-row div:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+label {
+    font-weight: 400 !important;
+}
+
+.header>div>ul>li>span {
+    color      : #000000;
+    font-weight: 500;
+}
+
+.ant-descriptions-item-label {
+    color      : #000 !important;
+    font-weight: 400 !important;
+}

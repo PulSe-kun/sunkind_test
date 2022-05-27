@@ -1,0 +1,444 @@
+//主题色
+@theme-color         : #2964FF;
+//标签页
+@tabColor            : #2964FF !important;
+//菜单
+@menu-background     : #1c2c42;
+@menu-item-background: #1c2c42;
+@menu-normal-color   : #fff;
+@menu-select-color   : #000 !important;
+@menu-hover-color    : #50a9ff;
+@header-icon-hover   : #50a9ff;
+
+
+//primary按钮
+@primary-style-normal   : #2964FF !important;
+@primary-style-hover    : #4C7DFF !important;
+@primary-style-active   : #0E48DF !important;
+@primary-style-disabled : #2964FF !important;
+// default按钮
+@default-style-normal   : #2964FF !important;
+@default-style-hover    : #80A1F7 !important;
+@default-style-active   : #033EDB !important;
+@default-style-disabled : #2964FF !important;
+
+// link按钮
+@link-style-normal   : #2964FF !important;
+@link-style-hover    : #739AFF !important;
+@link-style-active   : #0340E3 !important;
+@link-style-disabled : #2964FF !important;
+
+//表格字体样式
+@text-style-normal     : #5BBCD0 !important;
+@text-style-hover      : #9CECFD !important;
+@text-style-active     : #199EB9 !important;
+@text-style-disabled   : #199EB9 !important;
+// cancel按钮
+@cancel-style-normal   : #D9D9D9 !important;
+@cancel-style-hover    : #AEAEAE !important;
+@cancel-style-active   : #797979 !important;
+@cancel-style-disabled : #D9D9D9 !important;
+// danger按钮
+@danger-style-normal   : #C25959 !important;
+@danger-style-hover    : #F89595 !important;
+@danger-style-active   : #BD2121 !important;
+@danger-style-disabled : #C25959 !important;
+
+.primary-style {
+    background-color: @primary-style-normal;
+    border-color    : @primary-style-normal;
+    color           : #fff !important;
+}
+
+.primary-style:hover,
+.primary-style:focus {
+    background-color: @primary-style-hover;
+    border-color    : @primary-style-hover;
+    color           : #fff !important;
+}
+
+.primary-style:active,
+.primary-style.active {
+    background-color: @primary-style-active;
+    border-color    : @primary-style-active;
+    color           : #fff !important;
+}
+
+
+.primary-style-disabled,
+.primary-style.disabled,
+.primary-style[disabled],
+.primary-style-disabled:hover,
+.primary-style.disabled:hover,
+.primary-style[disabled]:hover,
+.primary-style-disabled:focus,
+.primary-style.disabled:focus,
+.primary-style[disabled]:focus,
+.primary-style-disabled:active,
+.primary-style.disabled:active,
+.primary-style[disabled]:active,
+.primary-style-disabled.active,
+.primary-style.disabled.active,
+.primary-style[disabled].active {
+    background-color: @primary-style-disabled;
+    border-color    : @primary-style-disabled;
+    color           : #fff !important;
+    opacity         : 0.3;
+}
+
+
+.default-style {
+    background-color: #fff !important;
+    border-color    : @default-style-normal;
+    color           : #201BA2 !important;
+}
+
+.default-style:hover,
+.default-style:focus {
+    background-color: #fff !important;
+    border-color    : @default-style-hover;
+    color           : #7772F2 !important;
+}
+
+.default-style:active,
+.default-style.active {
+    background-color: #fff !important;
+    border-color    : @default-style-active;
+    color           : #0C077C !important;
+}
+
+.default-style-disabled,
+.default-style.disabled,
+.default-style[disabled],
+.default-style-disabled:hover,
+.default-style.disabled:hover,
+.default-style[disabled]:hover,
+.default-style-disabled:focus,
+.default-style.disabled:focus,
+.default-style[disabled]:focus,
+.default-style-disabled:active,
+.default-style.disabled:active,
+.default-style[disabled]:active,
+.default-style-disabled.active,
+.default-style.disabled.active,
+.default-style[disabled].active {
+    background-color: #fff !important;
+    border-color    : @default-style-disabled;
+    color           : #201BA2 !important;
+    opacity         : 0.3;
+}
+
+.link-style {
+    color: @link-style-normal  !important;
+}
+
+.link-style:hover {
+    color: @link-style-hover  !important;
+}
+
+.link-style:active {
+    color: @link-style-active  !important;
+}
+
+.link-style[disabled] {
+    color  : @link-style-disabled  !important;
+    opacity: 0.3;
+}
+
+.text-style {
+    color: @text-style-normal  !important;
+}
+
+.text-style:hover {
+    color: @text-style-hover  !important;
+}
+
+.text-style:active {
+    color: @text-style-active  !important;
+}
+
+.text-style[disabled] {
+    color  : @text-style-disabled  !important;
+    opacity: 0.3;
+}
+
+.cancel-style {
+    background-color: transparent !important;
+    border-color    : @cancel-style-hover;
+    color           : #BFBFBF !important;
+}
+
+.cancel-style:hover,
+.cancel-style:focus {
+    background-color: transparent !important;
+    border-color    : @cancel-style-hover;
+    color           : #A4A4A4 !important;
+}
+
+.cancel-style:active,
+.cancel-style.active {
+    background-color: transparent !important;
+    border-color    : @cancel-style-active;
+    color           : #515151 !important;
+}
+
+.cancel-style-disabled,
+.cancel-style.disabled,
+.cancel-style[disabled],
+.cancel-style-disabled:hover,
+.cancel-style.disabled:hover,
+.cancel-style[disabled]:hover,
+.cancel-style-disabled:focus,
+.cancel-style.disabled:focus,
+.cancel-style[disabled]:focus,
+.cancel-style-disabled:active,
+.cancel-style.disabled:active,
+.cancel-style[disabled]:active,
+.cancel-style-disabled.active,
+.cancel-style.disabled.active,
+.cancel-style[disabled].active {
+    background-color: transparent !important;
+    border-color    : @cancel-style-disabled;
+    color           : #BFBFBF !important;
+    opacity         : 0.3;
+}
+
+.danger-style {
+    background-color: transparent !important;
+    border-color    : @danger-style-normal;
+    color           : #ED0000 !important;
+}
+
+.danger-style:hover,
+.danger-style:focus {
+    background-color: transparent !important;
+    border-color    : @danger-style-hover;
+    color           : #FF7F7F !important;
+}
+
+.danger-style:active,
+.danger-style.active {
+    background-color: transparent !important;
+    border-color    : @danger-style-active;
+    color           : #A61F1F !important;
+}
+
+.danger-style-disabled,
+.danger-style.disabled,
+.danger-style[disabled],
+.danger-style-disabled:hover,
+.danger-style.disabled:hover,
+.danger-style[disabled]:hover,
+.danger-style-disabled:focus,
+.danger-style.disabled:focus,
+.danger-style[disabled]:focus,
+.danger-style-disabled:active,
+.danger-style.disabled:active,
+.danger-style[disabled]:active,
+.danger-style-disabled.active,
+.danger-style.disabled.active,
+.danger-style[disabled].active {
+    background-color: transparent !important;
+    border-color    : @danger-style-disabled;
+    color           : #ED0000 !important;
+    opacity         : 0.3;
+}
+
+/deep/.ant-tabs-nav .ant-tabs-tab:hover,
+/deep/.ant-tabs-nav .ant-tabs-tab-active {
+    color: @tabColor;
+}
+
+/deep/.ant-tabs-ink-bar {
+    background-color: @tabColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+dl {
+    margin : 0;
+    padding: 0;
+}
+
+.ant-select-focused .ant-select-selection,
+.ant-select-selection:focus,
+.ant-select-selection:active,
+.ant-select-selection:hover {
+    border-color: @theme-color ;
+}
+
+/deep/.ant-pagination-item-active a {
+    color: @theme-color ;
+}
+
+.dialog {
+    overflow: auto !important;
+}
+
+/deep/.ant-drawer-mask {
+    min-height: 1080px !important;
+}
+
+.ant-input-lg,
+.ant-select-lg {
+    font-size: 14px;
+}
+
+/deep/.ant-radio-button-wrapper:hover {
+    color: @theme-color;
+}
+
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    box-shadow: 0px 0 0 0 @theme-color;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    background  : @theme-color;
+    border-color: @theme-color;
+}
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+    background  : @theme-color;
+    border-color: @theme-color;
+}
+
+.a-popover-style {
+    >div {
+        position   : fixed !important;
+        height     : 100%;
+        z-index    : 999;
+        // overflow: auto;
+
+        >div {
+            height: 100%;
+
+            .popover-style {
+                max-width: 900px;
+                width    : 50%;
+                height   : 50%;
+                overflow : auto;
+
+                .ant-popover-arrow {
+                    display: none;
+                }
+
+                .ant-popover-inner-content {
+                    padding: 0 !important;
+                }
+
+                .ant-descriptions-row>td {
+                    line-height   : 16px;
+                    padding       : 0;
+                    padding-bottom: 18px !important;
+
+                    .ant-descriptions-item-label {
+                        span {
+                            display      : inline-block;
+                            font-size    : 16px;
+                            height       : 16px;
+                            line-height  : 16px;
+                            width        : 100px;
+                            text-align   : right;
+                            overflow     : hidden;
+                            text-overflow: ellipsis;
+                            white-space  : nowrap;
+                        }
+
+                    }
+
+                    .ant-descriptions-item-content {
+                        display    : inline-block;
+                        height     : 20px;
+                        line-height: 16px;
+                        font-size  : 16px;
+                        font-family: "SourceHanSansSC-Medium";
+                        color      : #000000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.a-popover-styles {
+    >div {
+        display: none;
+    }
+}
+
+.ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected {
+    color           : @theme-color;
+    background-color: transparent !important;
+}
+
+.ant-table-thead>tr>th {
+    font-family: 'SourceHanSansSC-Medium' !important;
+    font-weight: normal !important;
+}
+
+
+
+.dialog-right {
+    .ant-drawer-content-wrapper {
+        .ant-drawer-body {
+            .header {
+                display        : flex !important;
+                flex-direction : column !important;
+                justify-content: space-between !important;
+                align-items    : flex-start !important;
+
+                .header-title {
+                    width: 100% !important;
+
+                    >span {
+                        font-size: 18px !important;
+                    }
+
+                    i {
+                        position : absolute !important;
+                        top      : 3px !important;
+                        right    : 0 !important;
+                        color    : #ffffff !important;
+                        font-size: 15px !important;
+                    }
+                }
+
+                .header-btn {
+                    a {
+                        margin-right: 20px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dialog {
+    .ant-drawer-content-wrapper {
+        .ant-drawer-body {
+            .header {
+                span {
+                    font-size: 18px !important;
+                }
+            }
+
+            .footer {
+                .model {
+                    .ant-form-item {
+                        .ant-form-item-control {
+                            width: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
