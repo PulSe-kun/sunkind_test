@@ -1,5 +1,6 @@
 const path = require('path')
 module.exports = {
+  productionSourceMap: false, // 源映射
   devServer: {
     overlay: {
       // 让浏览器 overlay 同时显示警告和错误

@@ -184,7 +184,7 @@ export default {
     // height: 16px;
     line-height: 16px;
     font-size: 16px;
-    font-family: 'SourceHanSansSC-Medium';
+    font-weight: bold;
     color: #000000;
   }
 }

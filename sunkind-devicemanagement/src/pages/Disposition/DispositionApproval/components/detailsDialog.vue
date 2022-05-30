@@ -1,18 +1,12 @@
 <template>
-  <a-drawer
-    :closable="false"
-    placement="right"
-    :zIndex="999"
-    width="620"
-    :visible="visible"
-    wrapClassName="dialog-right"
-    :mask="false"
-  >
+  <a-drawer :closable="false" placement="right" :zIndex="999" width="620" :visible="visible" wrapClassName="dialog-right" :mask="false">
     <div class="header">
       <div class="header-title">
-        <span v-if="item">{{
+        <span v-if="item">
+          {{
           item.cmName + " " + item.cmNum + " " + item.deptName
-        }}</span>
+          }}
+        </span>
         <a-icon type="close" @click="onClose" />
       </div>
       <div class="header-state"></div>
@@ -28,7 +22,7 @@
         >
           <img src="../../../../assets/img/editor.png" alt="" />
           <span>重新提交</span>
-        </a> -->
+        </a>-->
       </div>
     </div>
     <div class="footer" v-if="item">
@@ -46,9 +40,7 @@
               <span>{{ item.why | emptyValue }}</span>
             </a-descriptions-item>
             <a-descriptions-item label="图片说明">
-              <span class="span-title" v-if="fileList.length == 0"
-                >暂无图片</span
-              >
+              <span class="span-title" v-if="fileList.length == 0">暂无图片</span>
               <div>
                 <img
                   style="
@@ -82,94 +74,94 @@
   </a-drawer>
 </template>
 <script>
-import { getBatchImages } from "@/services/api";
-import ApprovalProcess from "@/components/ApprovalProcess.vue";
+import { getBatchImages } from '@/services/api'
+import ApprovalProcess from '@/components/ApprovalProcess.vue'
 export default {
   data() {
     return {
       visible: false,
       item: null,
       fileList: [],
-      approvalSteps: [],
-    };
+      approvalSteps: []
+    }
   },
   components: { ApprovalProcess },
   methods: {
     //查看图片
     watchViewImg(i, pictures) {
-      console.log(i, pictures);
-      this.$parent.watchViewImg(i, JSON.stringify(pictures));
+      console.log(i, pictures)
+      this.$parent.watchViewImg(i, JSON.stringify(pictures))
     },
     afterVisibleChange(item) {
-      console.log(item);
-      this.visible = true;
-      this.item = item;
+      console.log(item)
+      this.visible = true
+      this.item = item
 
-      let approvals = [];
-      let countUncomplete = 0;
+      let approvals = []
+      let countUncomplete = 0
       if (this.item.persons && this.item.persons.length > 0) {
         this.item.persons.sort(function (a, b) {
-          return a.sort - b.sort;
-        });
+          return a.sort - b.sort
+        })
 
         this.item.persons.map((person, index) => {
           if (index == 0) {
-            approvals.push(person);
+            approvals.push(person)
           } else {
             if (person.finish) {
-              approvals.push(person);
+              approvals.push(person)
             } else {
               if (countUncomplete == 0) {
                 // if (!person.type) {
                 //   person.type = 4;
                 // }
-                approvals.push(person);
-                countUncomplete += 1;
+                approvals.push(person)
+                countUncomplete += 1
               }
             }
           }
-        });
+        })
       }
       // console.log(approvals)
-      this.approvalSteps = approvals;
+      this.approvalSteps = approvals
 
-      this.fileList = [];
+      this.fileList = []
       if (this.item.attachmentSearchId) {
-        getBatchImages(this.item.attachmentSearchId).then((res) => {
-          console.log(res);
-          let { data } = res;
+        getBatchImages(this.item.attachmentSearchId).then(res => {
+          console.log(res)
+          let { data } = res
           if (data.pictures && data.pictures.length > 0) {
-            let list = [];
-            let images = data.pictures;
-            images.map((item) => {
+            let list = []
+            let images = data.pictures
+            images.map(item => {
               let image = {
                 name: item.name,
                 uid: item.id,
                 id: item.id,
                 type_value: true,
-                thumbUrl: "data:image/png;base64," + item.previewImage,
-              };
-              list.push(image);
-            });
-            this.fileList = list;
+                thumbUrl: 'data:image/png;base64,' + item.previewImage
+              }
+              list.push(image)
+            })
+            this.fileList = list
           }
-        });
+        })
       }
     },
     /**编辑 */
     editor(item) {
-      this.visible = false;
-      this.$parent.editor(item);
+      this.visible = false
+      this.$parent.editor(item)
     },
     compile(item) {
-      this.visible = false;
-      this.$parent.compile(item);
+      this.visible = false
+      this.$parent.compile(item)
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -291,7 +283,7 @@ export default {
               // height: 16px;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }

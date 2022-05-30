@@ -131,7 +131,7 @@ export default {
     },
     async logout() {
       await this.$store.dispatch('user/logout')
-      this.$message.success('退出成功')
+      this.$message.success('退出成功', 1)
       this.$router.push('/login')
     },
     openUrl(item) {

@@ -1,18 +1,12 @@
 <template>
-  <a-drawer
-    :closable="false"
-    placement="right"
-    :zIndex="999"
-    width="620"
-    :visible="visible"
-    wrapClassName="dialog-right"
-    :mask="false"
-  >
+  <a-drawer :closable="false" placement="right" :zIndex="999" width="620" :visible="visible" wrapClassName="dialog-right" :mask="false">
     <div class="header">
       <div class="header-title">
-        <span v-if="item">{{
+        <span v-if="item">
+          {{
           item.cmName + " " + item.cmNum + " " + item.deptName
-        }}</span>
+          }}
+        </span>
         <a-icon type="close" @click="onClose" />
       </div>
       <div class="header-state"></div>
@@ -32,9 +26,7 @@
               <span>{{ item.faultWhy | emptyValue }}</span>
             </a-descriptions-item>
             <a-descriptions-item label="图片说明">
-              <span class="span-title" v-if="fileList.length == 0"
-                >暂无图片</span
-              >
+              <span class="span-title" v-if="fileList.length == 0">暂无图片</span>
               <div>
                 <img
                   style="
@@ -63,10 +55,10 @@
           <div class="deal-div">
             <div class="deal-avator">
               {{
-                deal.createUserName.substring(
-                  deal.createUserName.length - 2,
-                  deal.createUserName.length
-                )
+              deal.createUserName.substring(
+              deal.createUserName.length - 2,
+              deal.createUserName.length
+              )
               }}
             </div>
             <div class="deal-detail">
@@ -74,19 +66,13 @@
               <p class="deal-time">{{ deal.updateTime }}</p>
               <p>处理结果：{{ deal.extension.result }}</p>
               <div v-if="deal.extension.result == '转办'">
-                <p v-if="deal.extension.userName">
-                  转办给：{{ deal.extension.userName }}
-                </p>
+                <p v-if="deal.extension.userName">转办给：{{ deal.extension.userName }}</p>
 
-                <p v-if="deal.extension.note">
-                  备注：{{ deal.extension.note }}
-                </p>
+                <p v-if="deal.extension.note">备注：{{ deal.extension.note }}</p>
               </div>
 
               <div v-if="deal.extension.result == '误报'">
-                <p v-if="deal.extension.note">
-                  误报说明：{{ deal.extension.note }}
-                </p>
+                <p v-if="deal.extension.note">误报说明：{{ deal.extension.note }}</p>
                 <a-row class="basic-info">
                   <a-col :span="3">图片：</a-col>
                   <a-col :span="21" v-if="deal.attachment">
@@ -110,21 +96,11 @@
                 </a-row>
               </div>
               <div v-if="deal.extension.result == '已维修'">
-                <p v-if="deal.extension.faultClass">
-                  故障分类：{{ deal.extension.faultClass.label }}
-                </p>
-                <p v-if="deal.extension.faultWhy">
-                  故障原因：{{ deal.extension.faultWhy }}
-                </p>
-                <p v-if="deal.extension.methods">
-                  解决方法：{{ deal.extension.methods }}
-                </p>
-                <p v-if="deal.extension.finishDate">
-                  完工日期：{{ deal.extension.finishDate }}
-                </p>
-                <p v-if="deal.extension.workingHours">
-                  维修工时：{{ deal.extension.workingHours }}小时
-                </p>
+                <p v-if="deal.extension.faultClass">故障分类：{{ deal.extension.faultClass.label }}</p>
+                <p v-if="deal.extension.faultWhy">故障原因：{{ deal.extension.faultWhy }}</p>
+                <p v-if="deal.extension.methods">解决方法：{{ deal.extension.methods }}</p>
+                <p v-if="deal.extension.finishDate">完工日期：{{ deal.extension.finishDate }}</p>
+                <p v-if="deal.extension.workingHours">维修工时：{{ deal.extension.workingHours }}小时</p>
                 <a-row class="basic-info">
                   <a-col :span="3">图片：</a-col>
                   <a-col :span="21" v-if="deal.attachment">
@@ -181,79 +157,79 @@
   </a-drawer>
 </template>
 <script>
-import { getActivities, getBatchImages } from "@/services/api";
-import Empty from "@/components/Empty/index";
+import { getActivities, getBatchImages } from '@/services/api'
+import Empty from '@/components/Empty/index'
 export default {
   data() {
     return {
       visible: false,
       item: null,
       fileList: [],
-      activities: [],
-    };
+      activities: []
+    }
   },
   components: { Empty },
   methods: {
-    //查看图片
+    // 查看图片
     watchViewImg(i, pictures) {
-      console.log(i, pictures);
-      this.$parent.watchViewImg(i, JSON.stringify(pictures));
+      console.log(i, pictures)
+      this.$parent.watchViewImg(i, JSON.stringify(pictures))
     },
     afterVisibleChange(item) {
-      console.log(item);
-      this.visible = true;
-      this.item = item;
-      //获取处理节点信息
-      getActivities(item.id).then((res) => {
+      console.log(item)
+      this.visible = true
+      this.item = item
+      // 获取处理节点信息
+      getActivities(item.id).then(res => {
         if (res.status == 200) {
-          let { data } = res;
+          const { data } = res
           if (data.rows && data.rows.length > 0) {
-            let count = 0;
+            let count = 0
             data.rows.map((v, i) => {
-              v.extension = JSON.parse(v.extension);
-              count = count + 1;
+              v.extension = JSON.parse(v.extension)
+              count = count + 1
               if (count == data.rows.length) {
-                this.activities = data.rows;
+                this.activities = data.rows
               }
-            });
-            return;
+            })
+            return
           }
-          this.activities = [];
+          this.activities = []
         }
-      });
-      this.fileList = [];
+      })
+      this.fileList = []
       if (this.item.attachmentSearchId) {
-        getBatchImages(this.item.attachmentSearchId).then((res) => {
-          console.log(res);
-          let { data } = res;
+        getBatchImages(this.item.attachmentSearchId).then(res => {
+          console.log(res)
+          const { data } = res
           if (data.pictures && data.pictures.length > 0) {
-            let list = [];
-            let images = data.pictures;
-            images.map((item) => {
-              let image = {
+            const list = []
+            const images = data.pictures
+            images.map(item => {
+              const image = {
                 name: item.name,
                 uid: item.id,
                 id: item.id,
                 type_value: true,
-                thumbUrl: "data:image/png;base64," + item.previewImage,
-              };
-              list.push(image);
-            });
-            this.fileList = list;
+                thumbUrl: 'data:image/png;base64,' + item.previewImage
+              }
+              list.push(image)
+            })
+            this.fileList = list
           }
-        });
+        })
       }
     },
-    /**编辑 */
+    /** 编辑 */
     editor(item) {
-      this.visible = false;
-      this.$parent.compile(item);
+      this.visible = false
+      this.$parent.compile(item)
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -375,7 +351,7 @@ export default {
               // height: 16px;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }

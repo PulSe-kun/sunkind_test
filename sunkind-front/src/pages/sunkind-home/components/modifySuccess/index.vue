@@ -12,16 +12,10 @@
     </div>
     <div class="footer">
       <div class="model">
-        <img src="@/assets/img/modify.png" alt="" />
+        <img src="@/assets/img/modify.png" alt />
         <div>账号密码修改成功</div>
         <div>修改密码后需要使用新密码登陆</div>
-        <a-button
-          style="width: 220px; margin-top: 47px"
-          type="primary"
-          size="large"
-          @click="againLogin"
-          >重新登录</a-button
-        >
+        <a-button style="width: 220px; margin-top: 47px" type="primary" size="large" @click="againLogin">重新登录</a-button>
       </div>
     </div>
   </a-drawer>
@@ -30,20 +24,20 @@
 export default {
   data() {
     return {
-      visible: false,
-    };
+      visible: false
+    }
   },
   methods: {
     afterVisibleChange(val) {},
-    /**重新登录 */
+    /** 重新登录 */
     async againLogin() {
-      this.visible = false;
-      await this.$store.dispatch("user/logout");
-      this.$message.success("退出成功");
-      this.$router.push(`/login`);
-    },
-  },
-};
+      this.visible = false
+      await this.$store.dispatch('user/logout')
+      this.$message.success('退出成功', 1)
+      this.$router.push('/login')
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog {

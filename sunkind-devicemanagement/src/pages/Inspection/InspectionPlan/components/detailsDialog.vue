@@ -1,28 +1,22 @@
 <template>
-  <a-drawer
-    :closable="false"
-    placement="right"
-    :zIndex="999"
-    width="620"
-    :visible="visible"
-    wrapClassName="dialog-right"
-    :mask="false"
-  >
+  <a-drawer :closable="false" placement="right" :zIndex="999" width="620" :visible="visible" wrapClassName="dialog-right" :mask="false">
     <div class="header">
       <div class="header-title">
-        <span v-if="item">{{
+        <span v-if="item">
+          {{
           item.cmName + " " + item.cmNum + " " + item.deptName
-        }}</span>
+          }}
+        </span>
         <a-icon type="close" @click="onClose" />
       </div>
       <div class="header-state"></div>
       <div class="header-btn" v-if="item">
         <a @click="editor(item)">
-          <img src="../../../../assets/img/editor.png" alt="" />
+          <img src="../../../../assets/img/editor.png" alt />
           <span>编辑</span>
         </a>
         <a @click="del(item)">
-          <img src="../../../../assets/img/delete.png" alt="" />
+          <img src="../../../../assets/img/delete.png" alt />
           <span>删除</span>
         </a>
       </div>
@@ -65,59 +59,51 @@
           </a-descriptions>
         </div>
       </div>
-      <maintain-items
-        :detail-data="drawerDetailData"
-        @showDeviceDetail="showDeviceDetail"
-        tableName="点检"
-      ></maintain-items>
-      <maintain-modal
-        ref="maintainModel"
-        :maintainItem="maintainItem"
-        tableName="点检"
-      ></maintain-modal>
+      <maintain-items :detail-data="drawerDetailData" @showDeviceDetail="showDeviceDetail" tableName="点检"></maintain-items>
+      <maintain-modal ref="maintainModel" :maintainItem="maintainItem" tableName="点检"></maintain-modal>
     </div>
   </a-drawer>
 </template>
 <script>
-import MaintainItems from "@/components/MaintainItems.vue";
-import MaintainModal from "@/components/MaintainModal.vue";
+import MaintainItems from '@/components/MaintainItems.vue'
+import MaintainModal from '@/components/MaintainModal.vue'
 export default {
   data() {
     return {
       visible: false,
       item: {},
       maintainItem: {},
-      drawerDetailData: [],
-    };
+      drawerDetailData: []
+    }
   },
   components: { MaintainItems, MaintainModal },
   methods: {
     afterVisibleChange(item) {
-      this.visible = true;
-      this.item = item;
-      this.drawerDetailData = item.cmCheckouts;
+      this.visible = true
+      this.item = item
+      this.drawerDetailData = item.cmCheckouts
     },
     /**编辑 */
     editor(item) {
-      this.visible = false;
-      this.$parent.compile(item);
+      this.visible = false
+      this.$parent.compile(item)
     },
     del(item) {
-      this.visible = false;
-      this.$parent.del_device(item.id);
+      this.visible = false
+      this.$parent.del_device(item.id)
     },
     showDeviceDetail(index) {
-      let obj = {};
-      obj = JSON.parse(JSON.stringify(this.drawerDetailData[index]));
-      obj.status = this.$utils.getStateName("status", obj.status);
-      this.maintainItem = obj;
-      this.$refs.maintainModel.showMaterialModal = true;
+      let obj = {}
+      obj = JSON.parse(JSON.stringify(this.drawerDetailData[index]))
+      obj.status = this.$utils.getStateName('status', obj.status)
+      this.maintainItem = obj
+      this.$refs.maintainModel.showMaterialModal = true
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -236,7 +222,7 @@ export default {
               // height: 16px;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }

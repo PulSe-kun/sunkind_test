@@ -15,7 +15,7 @@
         <span class="input_title">忘记密码？</span>
       </a-form-model-item>
       <a-form-model-item>
-        <a-button size="large" type="primary" style="width: 100%; height: 60px" @click="login" :loading="loading">登录</a-button>
+        <a-button size="large" type="primary" style="width: 100%; height: 50px" @click="login" :loading="loading">登录</a-button>
       </a-form-model-item>
     </a-form-model>
   </div>
@@ -67,7 +67,7 @@ export default {
               if (res.access_token) {
                 // 路由跳转重定向页面或者首页
                 this.$router.push({ path: '/sunkind-home' })
-                this.$message.success('登录成功')
+                this.$message.success('登录成功', 1)
               } else {
                 this.$message.error('账号或者密码输入错误')
               }
@@ -106,14 +106,14 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 750px;
-    height: 690px;
-    background: #ffffff;
-    padding: 68px 161px 95px 183px;
+    width: 600px;
+    height: 500px;
+    background: rgba(155, 151, 151, 0.5);
+    padding: 28px 120px 95px 120px;
     .title {
       text-align: center;
-      margin-bottom: 121px;
-      color: #000;
+      margin-bottom: 80px;
+      color: #e5e5e5;
       font-weight: 500;
       font-size: 42px;
     }
@@ -129,7 +129,7 @@ export default {
     }
     .ant-form-item:last-child {
       margin-bottom: 0 !important;
-      margin-top: 102px;
+      margin-top: 80px;
     }
   }
 }
@@ -139,13 +139,16 @@ export default {
 .input_title {
   position: absolute;
   right: -8px;
-  top: 35px;
+  top: 40px;
   display: inline-block;
   height: 20px;
   line-height: 20px;
   font-size: 14px;
   font-weight: 400;
-  color: #000000;
+  color: #000;
   cursor: pointer;
+}
+/deep/.ant-input-lg {
+  height: 50px;
 }
 </style>

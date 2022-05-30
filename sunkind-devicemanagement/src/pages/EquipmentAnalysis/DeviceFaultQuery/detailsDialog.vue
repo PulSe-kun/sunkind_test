@@ -21,9 +21,11 @@
           <a-descriptions :column="1" v-if="item">
             <a-descriptions-item>
               <span title="设备编号" slot="label">设备编号</span>
-              <span class="span-title" :title="item.cmNum">{{
+              <span class="span-title" :title="item.cmNum">
+                {{
                 item.cmNum | emptyValue
-              }}</span>
+                }}
+              </span>
             </a-descriptions-item>
             <a-descriptions-item>
               <span title="设备名称" slot="label">设备名称</span>
@@ -40,16 +42,11 @@
             </a-descriptions-item>
             <a-descriptions-item>
               <span title="故障等级" slot="label">故障等级</span>
-              <span
-                class="span-title"
-                v-text="item.level == 1 ? '高' : '低'"
-              ></span>
+              <span class="span-title" v-text="item.level == 1 ? '高' : '低'"></span>
             </a-descriptions-item>
             <a-descriptions-item>
               <span title="故障代码" slot="label">故障代码</span>
-              <span class="span-title">
-                {{ item.faultType | emptyValue }}
-              </span>
+              <span class="span-title">{{ item.faultType | emptyValue }}</span>
             </a-descriptions-item>
             <a-descriptions-item>
               <span title="上报时间" slot="label">上报时间</span>
@@ -61,9 +58,7 @@
             </a-descriptions-item>
             <a-descriptions-item>
               <span title="故障时长" slot="label">故障时长</span>
-              <span class="span-title"
-                >{{ item.consuming | emptyValue }}分钟</span
-              >
+              <span class="span-title">{{ item.consuming | emptyValue }}分钟</span>
             </a-descriptions-item>
           </a-descriptions>
         </div>
@@ -76,13 +71,13 @@ export default {
   props: {
     item: {
       type: Object,
-      default: {},
-    },
+      default: {}
+    }
   },
   data() {
     return {
-      visible: false,
-    };
+      visible: false
+    }
   },
   components: {},
   methods: {
@@ -94,10 +89,10 @@ export default {
       }
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -219,7 +214,7 @@ export default {
               display: inline-block;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }

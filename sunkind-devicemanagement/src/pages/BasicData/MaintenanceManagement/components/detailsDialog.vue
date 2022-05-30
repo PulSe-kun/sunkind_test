@@ -1,13 +1,5 @@
 <template>
-  <a-drawer
-    :closable="false"
-    placement="right"
-    :zIndex="999"
-    width="620"
-    :visible="visible"
-    wrapClassName="dialog-right"
-    :mask="false"
-  >
+  <a-drawer :closable="false" placement="right" :zIndex="999" width="620" :visible="visible" wrapClassName="dialog-right" :mask="false">
     <div class="header">
       <div class="header-title">
         <span v-if="item">{{ item.name }}</span>
@@ -16,11 +8,11 @@
       <div class="header-state"></div>
       <div class="header-btn" v-if="item">
         <a @click="editor(item)">
-          <img src="../../../../assets/img/editor.png" alt="" />
+          <img src="../../../../assets/img/editor.png" alt />
           <span>编辑</span>
         </a>
         <a @click="del(item)">
-          <img src="../../../../assets/img/delete.png" alt="" />
+          <img src="../../../../assets/img/delete.png" alt />
           <span>删除</span>
         </a>
       </div>
@@ -39,9 +31,7 @@
               <span>{{ item.method | emptyValue }}</span>
             </a-descriptions-item>
             <a-descriptions-item label="图片说明">
-              <span class="span-title" v-if="fileList.length == 0"
-                >暂无图片</span
-              >
+              <span class="span-title" v-if="fileList.length == 0">暂无图片</span>
               <div>
                 <img
                   style="
@@ -74,62 +64,62 @@
   </a-drawer>
 </template>
 <script>
-import { getBatchImages } from "@/services/api";
+import { getBatchImages } from '@/services/api'
 export default {
   data() {
     return {
       visible: false,
       fileList: [],
-      item: {},
-    };
+      item: {}
+    }
   },
   methods: {
     //查看图片
     watchViewImg(i, pictures) {
       // console.log(i, pictures);
-      this.$parent.watchViewImg(i, JSON.stringify(pictures));
+      this.$parent.watchViewImg(i, JSON.stringify(pictures))
     },
     afterVisibleChange(dataObj) {
-      this.visible = true;
-      this.item = dataObj;
-      this.fileList = [];
+      this.visible = true
+      this.item = dataObj
+      this.fileList = []
       if (this.item.attachmentSearchId) {
-        getBatchImages(this.item.attachmentSearchId).then((res) => {
-          console.log(res);
-          let { data } = res;
+        getBatchImages(this.item.attachmentSearchId).then(res => {
+          console.log(res)
+          let { data } = res
           if (data.pictures && data.pictures.length > 0) {
-            let list = [];
-            let images = data.pictures;
-            images.map((item) => {
+            let list = []
+            let images = data.pictures
+            images.map(item => {
               let image = {
                 name: item.name,
                 uid: item.id,
                 id: item.id,
                 type_value: true,
-                thumbUrl: "data:image/png;base64," + item.previewImage,
-              };
-              list.push(image);
-            });
-            this.fileList = list;
+                thumbUrl: 'data:image/png;base64,' + item.previewImage
+              }
+              list.push(image)
+            })
+            this.fileList = list
           }
-        });
+        })
       }
       // }
     },
     /**编辑 */
     editor(item) {
-      this.visible = false;
-      this.$parent.compile(item);
+      this.visible = false
+      this.$parent.compile(item)
     },
     del(item) {
-      this.visible = false;
-      this.$parent.del_device(item.id);
+      this.visible = false
+      this.$parent.del_device(item.id)
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -248,7 +238,7 @@ export default {
               // height: 16px;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }

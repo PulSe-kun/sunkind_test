@@ -266,7 +266,7 @@ dl {
   height: 20px;
   line-height: 16px;
   font-size: 16px;
-  font-family: "SourceHanSansSC-Medium";
+  font-weight: bold;
   color: #000000;
 }
 .a-popover-styles > div {
@@ -277,8 +277,7 @@ dl {
   background-color: transparent !important;
 }
 .ant-table-thead > tr > th {
-  font-family: 'SourceHanSansSC-Medium' !important;
-  font-weight: normal !important;
+  font-weight: bold !important;
 }
 .dialog-right .ant-drawer-content-wrapper .ant-drawer-body .header {
   display: flex !important;

@@ -11,19 +11,21 @@
   >
     <div class="header">
       <div class="header-title">
-        <span v-if="item">{{
+        <span v-if="item">
+          {{
           item.cmName
-        }}</span>
+          }}
+        </span>
         <a-icon type="close" @click="onClose" />
       </div>
       <div class="header-state"></div>
       <div class="header-btn" v-if="item">
         <a @click="editor(item)">
-          <img src="../../../../assets/img/editor.png" alt="" />
+          <img src="../../../../assets/img/editor.png" alt />
           <span>编辑</span>
         </a>
         <a @click="del(item)">
-          <img src="../../../../assets/img/delete.png" alt="" />
+          <img src="../../../../assets/img/delete.png" alt />
           <span>删除</span>
         </a>
       </div>
@@ -121,13 +123,13 @@ export default {
   props: {
     item: {
       type: Object,
-      default: {},
-    },
+      default: {}
+    }
   },
   data() {
     return {
-      visible: false,
-    };
+      visible: false
+    }
   },
   methods: {
     afterVisibleChange(val) {
@@ -138,18 +140,18 @@ export default {
     },
     /**编辑 */
     editor(item) {
-      this.visible = false;
-      this.$parent.compile(item);
+      this.visible = false
+      this.$parent.compile(item)
     },
     del(item) {
-      this.visible = false;
-      this.$parent.del_device(item.id);
+      this.visible = false
+      this.$parent.del_device(item.id)
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -268,7 +270,7 @@ export default {
               // height: 16px;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }

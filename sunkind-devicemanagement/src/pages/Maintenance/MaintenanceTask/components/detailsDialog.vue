@@ -1,18 +1,12 @@
 <template>
-  <a-drawer
-    :closable="false"
-    placement="right"
-    :zIndex="999"
-    width="620"
-    :visible="visible"
-    wrapClassName="dialog-right"
-    :mask="false"
-  >
+  <a-drawer :closable="false" placement="right" :zIndex="999" width="620" :visible="visible" wrapClassName="dialog-right" :mask="false">
     <div class="header">
       <div class="header-title">
-        <span v-if="item">{{
+        <span v-if="item">
+          {{
           item.cmName + " " + item.cmNum + " " + item.deptName
-        }}</span>
+          }}
+        </span>
         <a-icon type="close" @click="onClose" />
       </div>
       <div class="header-state"></div>
@@ -25,15 +19,11 @@
         <a @click="del(item)">
           <img src="../../../../assets/img/delete.png" alt="" />
           <span>删除</span>
-        </a> -->
+        </a>-->
       </div>
     </div>
     <div class="footer" v-if="item">
-      <maintain-items
-        :detail-data="drawerDetailData"
-        @showDeviceDetail="showDeviceDetail"
-        tableName="保养"
-      ></maintain-items>
+      <maintain-items :detail-data="drawerDetailData" @showDeviceDetail="showDeviceDetail" tableName="保养"></maintain-items>
       <div class="footer-title">
         <span></span>
         <h3>处理信息</h3>
@@ -43,10 +33,10 @@
           <div class="deal-div">
             <div class="deal-avator">
               {{
-                deal.createUserName.substring(
-                  deal.createUserName.length - 2,
-                  deal.createUserName.length
-                )
+              deal.createUserName.substring(
+              deal.createUserName.length - 2,
+              deal.createUserName.length
+              )
               }}
             </div>
 
@@ -55,31 +45,18 @@
               <p class="deal-time">{{ deal.updateTime }}</p>
               <p>处理结果：{{ deal.extension.result }}</p>
               <div v-if="deal.extension.result == '已保养'">
-                <p v-if="deal.extension.finishDate">
-                  完工日期：{{ deal.extension.finishDate }}
-                </p>
-                <p v-if="deal.extension.workingHours">
-                  保养工时：{{ deal.extension.workingHours }}小时
-                </p>
-                <p v-if="deal.extension.note">
-                  备注：{{ deal.extension.note }}
-                </p>
+                <p v-if="deal.extension.finishDate">完工日期：{{ deal.extension.finishDate }}</p>
+                <p v-if="deal.extension.workingHours">保养工时：{{ deal.extension.workingHours }}小时</p>
+                <p v-if="deal.extension.note">备注：{{ deal.extension.note }}</p>
                 <div
                   v-if="
                     deal.extension.maintainItems &&
                     deal.extension.maintainItems.length > 0
                   "
                 >
-                  <div
-                    v-for="maintainItem in deal.extension.maintainItems"
-                    :key="maintainItem.id"
-                  >
+                  <div v-for="maintainItem in deal.extension.maintainItems" :key="maintainItem.id">
                     <p>
-                      <span
-                        style="margin-left: 50px"
-                        v-if="maintainItem.note_value"
-                        >{{ maintainItem.note_value }}</span
-                      >
+                      <span style="margin-left: 50px" v-if="maintainItem.note_value">{{ maintainItem.note_value }}</span>
                     </p>
                   </div>
                 </div>
@@ -107,13 +84,9 @@
               </div>
 
               <div v-if="deal.extension.result == '转办'">
-                <p v-if="deal.extension.userName">
-                  转办给：{{ deal.extension.userName }}
-                </p>
+                <p v-if="deal.extension.userName">转办给：{{ deal.extension.userName }}</p>
 
-                <p v-if="deal.extension.note">
-                  备注：{{ deal.extension.note }}
-                </p>
+                <p v-if="deal.extension.note">备注：{{ deal.extension.note }}</p>
               </div>
 
               <div
@@ -122,9 +95,7 @@
                   deal.extension.result == '作废'
                 "
               >
-                <p v-if="deal.extension.note">
-                  {{ deal.extension.result }}原因：{{ deal.extension.note }}
-                </p>
+                <p v-if="deal.extension.note">{{ deal.extension.result }}原因：{{ deal.extension.note }}</p>
               </div>
             </div>
           </div>
@@ -159,19 +130,15 @@
           </a-descriptions>
         </div>
       </div>
-      <maintain-modal
-        ref="maintainModel"
-        :maintainItem="maintainItem"
-        tableName="保养"
-      ></maintain-modal>
+      <maintain-modal ref="maintainModel" :maintainItem="maintainItem" tableName="保养"></maintain-modal>
     </div>
   </a-drawer>
 </template>
 <script>
-import MaintainItems from "@/components/MaintainItems.vue";
-import MaintainModal from "@/components/MaintainModal.vue";
-import { getActivities, getBatchImages } from "@/services/api";
-import Empty from "@/components/Empty/index";
+import MaintainItems from '@/components/MaintainItems.vue'
+import MaintainModal from '@/components/MaintainModal.vue'
+import { getActivities, getBatchImages } from '@/services/api'
+import Empty from '@/components/Empty/index'
 export default {
   data() {
     return {
@@ -179,60 +146,60 @@ export default {
       item: null,
       maintainItem: {},
       drawerDetailData: [],
-      activities: [],
-    };
+      activities: []
+    }
   },
   components: { MaintainItems, MaintainModal, Empty },
   methods: {
     //查看图片
     watchViewImg(i, pictures) {
       // console.log(i, pictures);
-      this.$parent.watchViewImg(i, JSON.stringify(pictures));
+      this.$parent.watchViewImg(i, JSON.stringify(pictures))
     },
     afterVisibleChange(activeKey, item) {
-      this.visible = true;
-      this.item = item;
-      this.drawerDetailData = item.cmItems;
+      this.visible = true
+      this.item = item
+      this.drawerDetailData = item.cmItems
       //获取处理节点信息
-      getActivities(item.id).then((res) => {
+      getActivities(item.id).then(res => {
         if (res.status == 200) {
-          let { data } = res;
+          let { data } = res
           if (data.rows && data.rows.length > 0) {
-            let count = 0;
+            let count = 0
             data.rows.map((v, i) => {
-              v.extension = JSON.parse(v.extension);
-              count = count + 1;
+              v.extension = JSON.parse(v.extension)
+              count = count + 1
               if (count == data.rows.length) {
-                this.activities = data.rows;
+                this.activities = data.rows
               }
-            });
-            return;
+            })
+            return
           }
-          this.activities = [];
+          this.activities = []
         }
-      });
+      })
     },
     /**编辑 */
     editor(item) {
-      this.visible = false;
-      this.$parent.compile(item);
+      this.visible = false
+      this.$parent.compile(item)
     },
     del(item) {
-      this.visible = false;
-      this.$parent.del_device(item.id);
+      this.visible = false
+      this.$parent.del_device(item.id)
     },
     showDeviceDetail(index) {
-      let obj = {};
-      obj = JSON.parse(JSON.stringify(this.drawerDetailData[index]));
-      obj.status = this.$utils.getStateName("status", obj.status);
-      this.maintainItem = obj;
-      this.$refs.maintainModel.showMaterialModal = true;
+      let obj = {}
+      obj = JSON.parse(JSON.stringify(this.drawerDetailData[index]))
+      obj.status = this.$utils.getStateName('status', obj.status)
+      this.maintainItem = obj
+      this.$refs.maintainModel.showMaterialModal = true
     },
     onClose() {
-      this.visible = false;
-    },
-  },
-};
+      this.visible = false
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog-right {
@@ -354,7 +321,7 @@ export default {
               // height: 16px;
               line-height: 16px;
               font-size: 16px;
-              font-family: "SourceHanSansSC-Medium";
+              font-weight: bold;
               color: #000000;
             }
           }
