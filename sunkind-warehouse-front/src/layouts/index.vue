@@ -104,7 +104,7 @@
           background: '#fff',
         }">
         <tag-view :addroutes="addroutes" @reload="reload" />
-        <div v-if="isRouterAlive" class="tabs-view-content animate__animated animate__fadeInLeft">
+        <div v-if="isRouterAlive" class="tabs-view-content">
           <router-view />
         </div>
       </a-layout-content>
