@@ -73,6 +73,7 @@ router.beforeEach(async (to, from, next) => {
     window.localStorage.clear()
     window.sessionStorage.clear()
     removeToken()
+    // this.$message.success('登录成功')
     window.location.href = process.env.VUE_APP_URL
   }
 })

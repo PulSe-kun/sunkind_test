@@ -1,82 +1,68 @@
 <template>
   <div class="login-container">
-    <img class="login-logo" src="../../assets/img/logo_bg.png" alt="" />
+    <img class="login-logo" src="../../assets/img/logo_bg.png" alt/>
     <a-form ref="form" :model="form" class="login-form">
       <h2 class="title">尚景平台</h2>
       <a-form-item>
         <a-input class="inputBox" v-model="form.username">
-          <a-icon
-            slot="prefix"
-            type="user"
-            style="color: rgba(0, 0, 0, 0.25)"
-          />
+          <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.25)"/>
         </a-input>
       </a-form-item>
       <a-form-item>
         <a-input-password class="inputBox" v-model="form.password">
-          <a-icon
-            slot="prefix"
-            type="lock"
-            style="color: rgba(0, 0, 0, 0.25)"
-          />
+          <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.25)"/>
         </a-input-password>
       </a-form-item>
       <a-form-item>
-        <a-button
-          class="submit primary-style"
-          type="primary"
-          @click="onSubmit"
-          :loading="loading"
-          >登录</a-button
-        >
+        <a-button class="submit primary-style" type="primary" @click="onSubmit" :loading="loading">登录</a-button>
       </a-form-item>
     </a-form>
   </div>
 </template>
 
 <script>
-const Base64 = require("js-base64").Base64;
+const Base64 = require('js-base64').Base64
 export default {
   data() {
     return {
       form: {
-        username: "admin",
-        password: "123456",
+        username: 'admin',
+        password: '123456'
       },
-      loading: false,
-    };
+      loading: false
+    }
   },
   methods: {
     async onSubmit() {
       // console.log("登陆成功！");
-      if (this.form.username == "") {
-        this.$message.error("用户名不能为空");
-        return;
+      if (this.form.username == '') {
+        this.$message.error('用户名不能为空')
+        return
       }
-      if (this.form.password == "") {
-        this.$message.error("密码不能为空");
-        return;
+      if (this.form.password == '') {
+        this.$message.error('密码不能为空')
+        return
       }
-      this.loading = true;
+      this.loading = true
       // 封装登陆数据
-      const loginData = { ...this.form };
+      const loginData = {...this.form}
       // 密码Base64编码
-      loginData.password = Base64.encode(this.form.password);
+      loginData.password = Base64.encode(this.form.password)
       // console.log(loginData);
       this.$store
-        .dispatch("user/login", loginData)
-        .then(() => {
-          this.loading = false;
-          this.$message.success("登录成功");
-          // 路由跳转重定向页面或者首页
-          this.$router.push({ path: "/" });
-        })
-        .catch(() => {
-          this.loading = false;
-        });
-    },
-  },
-};
+          .dispatch('user/login', loginData)
+          .then(() => {
+            this.loading = false
+            this.$message.success('登录成功')
+            // 路由跳转重定向页面或者首页
+            this.$router.push({path: '/'})
+          })
+          .catch(() => {
+            this.loading = false
+          })
+    }
+  }
+}
 </script>
 <style scoped>
 .login-form {
@@ -109,7 +95,7 @@ export default {
 .submit {
   width: 414px;
   height: 60px;
-  background: @theme-color  ;
+  background: @theme-color;
   border-radius: 3px;
 }
 /* 用户登陆标题 */

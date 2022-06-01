@@ -19,6 +19,7 @@
       </a-form-model-item>
     </a-form-model>
   </div>
+  <div></div>
 </template>
 
 <script>
@@ -90,10 +91,10 @@ export default {
 .login-container {
   width: 100%;
   height: 100%;
-  background: url('../../assets/img/bg_small.png');
-  background-repeat: no-repeat;
+  background: url('../../assets/img/bg_small.png') no-repeat;
   background-size: 100% 100%;
   position: relative;
+
   .login-logo {
     position: fixed;
     left: 55px;
@@ -101,6 +102,7 @@ export default {
     width: 269px;
     height: 37px;
   }
+
   .login-form {
     position: absolute;
     top: 50%;
