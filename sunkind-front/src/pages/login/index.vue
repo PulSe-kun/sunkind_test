@@ -12,14 +12,13 @@
         <a-input size="large" v-model="form.password" type="password" autocomplete="off" @keyup.enter="login" placeholder="请输入密码">
           <img slot="prefix" class="login-img" src="../../assets/img/password.png" alt />
         </a-input>
-        <span class="input_title">忘记密码？</span>
+        <span class="input_title" @click="forget">忘记密码？</span>
       </a-form-model-item>
       <a-form-model-item>
         <a-button size="large" type="primary" style="width: 100%; height: 50px" @click="login" :loading="loading">登录</a-button>
       </a-form-model-item>
     </a-form-model>
   </div>
-  <div></div>
 </template>
 
 <script>
@@ -64,7 +63,7 @@ export default {
             .dispatch('user/login', loginData)
             .then(res => {
               console.log(res)
-              this.loading = false
+              this.loading = false`1`
               if (res.access_token) {
                 // 路由跳转重定向页面或者首页
                 this.$router.push({ path: '/sunkind-home' })
@@ -82,6 +81,9 @@ export default {
           return false
         }
       })
+    },
+    forget() {
+      this.$message.warning('请联系管理员重置密码', 2)
     }
   }
 }
@@ -112,6 +114,7 @@ export default {
     height: 500px;
     background: rgba(155, 151, 151, 0.5);
     padding: 28px 120px 95px 120px;
+
     .title {
       text-align: center;
       margin-bottom: 80px;
@@ -119,25 +122,31 @@ export default {
       font-weight: 500;
       font-size: 42px;
     }
+
     .login-img {
       width: 20px;
       height: 20px;
     }
+
     .ant-form-item {
       margin-bottom: 30px;
+
       .ant-input-lg {
         height: 52px;
       }
     }
+
     .ant-form-item:last-child {
       margin-bottom: 0 !important;
       margin-top: 80px;
     }
   }
 }
-/deep/.ant-input-affix-wrapper .ant-input:not(:first-child) {
+
+/deep/ .ant-input-affix-wrapper .ant-input:not(:first-child) {
   padding-left: 40px;
 }
+
 .input_title {
   position: absolute;
   right: -8px;
@@ -150,7 +159,8 @@ export default {
   color: #000;
   cursor: pointer;
 }
-/deep/.ant-input-lg {
+
+/deep/ .ant-input-lg {
   height: 50px;
 }
 </style>

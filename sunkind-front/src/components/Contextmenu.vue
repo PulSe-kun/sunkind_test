@@ -20,13 +20,13 @@ export default {
     visible: {
       type: Boolean,
       required: false,
-      default: false,
+      default: false
     },
     itemList: {
       type: Array,
       required: true,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   data() {
     return {
@@ -34,16 +34,16 @@ export default {
       top: 0,
       target: null,
       meta: null,
-      selectedKeys: [],
+      selectedKeys: []
     };
   },
   computed: {
     style() {
       return {
         left: this.left + "px",
-        top: this.top + "px",
+        top: this.top + "px"
       };
-    },
+    }
   },
   created() {
     window.addEventListener("click", this.closeMenu);
@@ -66,8 +66,8 @@ export default {
     handleClick({ key }) {
       this.$emit("select", key, this.target, this.meta);
       this.closeMenu();
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -79,6 +79,7 @@ export default {
   box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05),
     0px 6px 16px 0px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
 }
+
 .ant-menu-item {
   margin: 0 !important // 菜单项之间的缝隙会影响点击
 ;

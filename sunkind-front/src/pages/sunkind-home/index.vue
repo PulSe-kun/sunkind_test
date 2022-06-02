@@ -3,8 +3,8 @@
     <a-layout style="height: 100vh" class="layout">
       <a-layout-header>
         <div class="logo">
-          <img src="../../assets/img/sunkind.png" alt />
-          <img src="../../assets/img/text.png" alt />
+          <img src="../../assets/img/sunkind.png" alt/>
+          <img src="../../assets/img/text.png" alt/>
         </div>
         <div id="myheader">
           <!-- <div>
@@ -15,18 +15,20 @@
           </div>-->
           <a-dropdown>
             <span>
-              <img class="img_people" src="../../assets/img/people.png" alt="头像" />
+              <img class="img_people" src="../../assets/img/people.png" alt="头像"/>
               <span style="vertical-align: middle; font-size: 20px; color: #1a1a1a">{{ $store.state.user.name }}</span>
             </span>
             <a-menu slot="overlay">
               <a-menu-item>
                 <a @click="changePassword">
-                  <a-icon type="setting" style="margin-right: 8px" />修改密码
+                  <a-icon type="setting" style="margin-right: 8px"/>
+                  修改密码
                 </a>
               </a-menu-item>
               <a-menu-item>
                 <a @click="logout">
-                  <a-icon type="poweroff" style="margin-right: 8px" />退出登录
+                  <a-icon type="poweroff" style="margin-right: 8px"/>
+                  退出登录
                 </a>
               </a-menu-item>
             </a-menu>
@@ -36,10 +38,10 @@
       <a-layout-content style="height: calc(100vh - 88px)">
         <div class="sunkind-home-content">
           <a
-            v-for="(item, index) in cardList"
-            :key="index"
-            class="model-card"
-            :style="{
+              v-for="(item, index) in cardList"
+              :key="index"
+              class="model-card"
+              :style="{
               background: item.background,
             }"
           >
@@ -48,14 +50,14 @@
               <span :title="item.description">{{ item.description }}</span>
               <div>
                 <a
-                  :style="{
+                    :style="{
                     background: item.background,
                   }"
-                  title="进入"
-                  target="_blank"
-                  @click="openUrl(item)"
+                    title="进入"
+                    target="_blank"
+                    @click="openUrl(item)"
                 >
-                  <img src="../../assets/img/in.png" alt />
+                  <img src="../../assets/img/in.png" alt/>
                 </a>
               </div>
             </div>
@@ -64,11 +66,11 @@
                   background: item.logo_background,
                 }">
                 <img
-                  v-if="item.menuIcon"
-                  :src="
+                    v-if="item.menuIcon"
+                    :src="
                     require('@/assets/systemIcon/' + item.menuIcon + '.png')
                   "
-                  alt
+                    alt
                 />
               </div>
               <div class="logo-title">
@@ -81,16 +83,17 @@
       </a-layout-content>
     </a-layout>
     <template>
-      <ChangePassword ref="changePassword" />
-      <ModifySuccess ref="modifySuccess" />
+      <ChangePassword ref="changePassword"/>
+      <ModifySuccess ref="modifySuccess"/>
     </template>
   </div>
 </template>
 
 <script>
-import { getSysMenus } from '@/services/api_user'
-import { getToken } from '@/utils/auth' // get token from cookie
-import { ChangePassword, ModifySuccess } from './components/index'
+import {getSysMenus} from '@/services/api_user'
+import {getToken} from '@/utils/auth' // get token from cookie
+import {ChangePassword, ModifySuccess} from './components/index'
+
 const colorList = [
   {
     background: '#50A9FF',
@@ -148,8 +151,8 @@ export default {
       if (hasToken) {
         // 注意 👉首页判定下token是否存在
         window.open(
-          'http://' + path + '?id=' + item.id + '&token=' + getToken()
-          // "_self"
+            'http://' + path + '?id=' + item.id + '&token=' + getToken()
+            // "_self"
         )
       } else {
         this.$router.push('/login')
@@ -174,6 +177,7 @@ export default {
         }
       })
     }
+
     // mouseover() {
     //   //   console.log(this.$refs.model_card[0].css);
     // },
@@ -184,41 +188,50 @@ export default {
 <style scoped lang="less">
 .sunkind-home {
   height: 100%;
+
   .ant-layout-header {
     height: 88px;
     line-height: 58px;
     background: #ffffff;
-    box-shadow: 0px 1px 6px 0px rgba(115, 115, 115, 0.43);
+    box-shadow: 0 1px 6px 0 rgba(115, 115, 115, 0.43);
     padding: 15px 28px;
+
     .logo {
       float: left;
       height: 43px;
       line-height: 43px;
+
       img:first-child {
         width: 170px;
         height: 43px;
         margin-right: 24px;
       }
+
       img:last-child {
         width: 106px;
         height: 24px;
         vertical-align: bottom;
       }
     }
+
     #myheader {
       display: flex;
       justify-content: flex-end;
       align-items: center;
+
       > * {
         padding: 0 16px;
       }
+
       > *:not(i):hover {
         background: rgba(0, 0, 0, 0.025);
       }
+
       .img_clock {
         width: 26px;
         height: 26px;
       }
+
       .img_people {
         width: 24px;
         height: 24px;
@@ -226,10 +239,12 @@ export default {
       }
     }
   }
+
   .sunkind-home-content {
     height: 100%;
     text-align: left;
     overflow: auto;
+
     .model-card {
       margin: 30px 30px 32px 30px;
       cursor: default;
@@ -237,6 +252,7 @@ export default {
       border-radius: 13px;
       position: relative;
       overflow: hidden;
+
       &:hover {
         .card-title {
           opacity: 1;
@@ -247,9 +263,11 @@ export default {
           -moz-transition: -moz-transform 0.4s, opacity 0.1s;
           transition: transform 0.4s, opacity 0.1s;
         }
+
         .card {
           transform: translateX(50%);
           padding: 45px 60px;
+
           .logo-title {
             opacity: 0;
             -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
@@ -258,6 +276,7 @@ export default {
           }
         }
       }
+
       .card-title {
         position: absolute;
         left: 0;
@@ -281,6 +300,7 @@ export default {
         -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
         -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
         transition: transform 0.4s, opacity 0.1s 0.3s;
+
         h3 {
           width: 100%;
           overflow: hidden;
@@ -294,6 +314,7 @@ export default {
           font-weight: 500;
           color: #000000;
         }
+
         span {
           width: 100%;
           overflow: hidden;
@@ -307,16 +328,19 @@ export default {
           font-weight: 400;
           color: #000000;
         }
+
         div {
           width: 100%;
           height: 24px;
           text-align: right;
+
           a {
             display: inline-block;
             width: 43px;
             height: 24px;
             border-radius: 12px;
             text-align: center;
+
             img {
               width: 14px;
               height: 14px;
@@ -334,9 +358,11 @@ export default {
         padding: 45px 73px;
         width: 420px;
         height: 180px;
+
         > div {
           float: left;
         }
+
         .logo-img {
           width: 90px;
           height: 90px;
@@ -346,16 +372,19 @@ export default {
           justify-content: center;
           align-items: center;
           overflow: hidden;
+
           img {
             width: 100%;
             height: 100%;
           }
         }
+
         .logo-title {
           opacity: 1;
           width: 140px;
           height: 90px;
           padding: 10px 0;
+
           h3 {
             overflow: hidden;
             white-space: nowrap;
@@ -367,6 +396,7 @@ export default {
             line-height: 22px;
             margin-bottom: 20px;
           }
+
           p {
             font-size: 16px;
             font-weight: 400;

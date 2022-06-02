@@ -8,8 +8,8 @@
 <script>
 export default {
   props: {
-    title: String,
-  },
+    title: String
+  }
 };
 </script>
 
@@ -23,12 +23,14 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
   span:first-child {
     display: inline-block;
     width: 3px;
     height: 20px;
     background: #385cef;
   }
+
   span:last-child {
     display: inline-block;
     margin-left: 10px;

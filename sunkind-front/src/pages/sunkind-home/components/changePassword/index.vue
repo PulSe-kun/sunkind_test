@@ -1,67 +1,22 @@
 <template>
-  <a-drawer
-    :closable="false"
-    placement="top"
-    :visible="visible"
-    :after-visible-change="afterVisibleChange"
-    wrapClassName="dialog"
-  >
+  <a-drawer :closable="false" placement="top" :visible="visible" :after-visible-change="afterVisibleChange" wrapClassName="dialog">
     <div class="header">
       <span>修改密码</span>
       <a-icon type="close" @click="onClose" />
     </div>
     <div class="footer">
       <div class="model">
-        <a-form-model
-          ref="ruleForm"
-          :model="form"
-          :rules="rules"
-          :label-col="labelCol"
-          :wrapper-col="wrapperCol"
-        >
-          <a-form-model-item
-            has-feedback
-            :label-col="{ span: 4 }"
-            label="原密码"
-            prop="password"
-          >
-            <a-input
-              v-model="form.password"
-              placeholder="请输入原密码"
-              type="password"
-              autocomplete="off"
-            />
+        <a-form-model ref="ruleForm" :model="form" :rules="rules" :label-col="labelCol" :wrapper-col="wrapperCol">
+          <a-form-model-item has-feedback :label-col="{ span: 4 }" label="原密码" prop="password">
+            <a-input v-model="form.password" placeholder="请输入原密码" type="password" autocomplete="off" />
           </a-form-model-item>
-          <a-form-model-item
-            has-feedback
-            :label-col="{ span: 4 }"
-            label="新密码"
-            prop="pass"
-          >
-            <a-input
-              v-model="form.pass"
-              type="password"
-              placeholder="请输入新密码"
-              autocomplete="off"
-            />
+          <a-form-model-item has-feedback :label-col="{ span: 4 }" label="新密码" prop="pass">
+            <a-input v-model="form.pass" type="password" placeholder="请输入新密码" autocomplete="off" />
           </a-form-model-item>
-          <a-form-model-item
-            has-feedback
-            :label-col="{ span: 4 }"
-            label="确认新密码"
-            prop="checkPass"
-          >
-            <a-input
-              v-model="form.checkPass"
-              type="password"
-              placeholder="请再次输入新密码"
-              autocomplete="off"
-            />
+          <a-form-model-item has-feedback :label-col="{ span: 4 }" label="确认新密码" prop="checkPass">
+            <a-input v-model="form.checkPass" type="password" placeholder="请再次输入新密码" autocomplete="off" />
           </a-form-model-item>
-          <a-form-model-item
-            :wrapper-col="{ span: 14, offset: 4 }"
-            style="margin-bottom: 0"
-          >
+          <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }" style="margin-bottom: 0">
             <div
               style="
                 display: flex;
@@ -77,9 +32,7 @@
                     color: #b5b5b5;
                     border: 1px solid #b4b4b4;
                   "
-                >
-                  取消
-                </a-button>
+                >取消</a-button>
                 <a-button type="primary" @click="onSubmit">保存</a-button>
               </div>
             </div>
@@ -90,61 +43,61 @@
   </a-drawer>
 </template>
 <script>
-import { modifyPassword } from "@/services/api_user";
-const Base64 = require("js-base64").Base64;
+import { modifyPassword } from '@/services/api_user'
+const Base64 = require('js-base64').Base64
 export default {
   data() {
-    let reg = new RegExp(/(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,20}$/);
-    let validatePassword = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请输入原密码"));
+    const reg = new RegExp(/(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,20}$/)
+    const validatePassword = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入原密码'))
       } else if (!reg.test(value)) {
-        callback(new Error("密码长度6~20位，数字、字母、字符至少包含两种"));
+        callback(new Error('密码长度6~20位，数字、字母、字符至少包含两种'))
       } else {
-        if (this.form.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
+        if (this.form.checkPass !== '') {
+          this.$refs.ruleForm.validateField('checkPass')
         }
-        callback();
+        callback()
       }
-    };
-    let validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请输入新密码"));
+    }
+    const validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入新密码'))
       } else if (!reg.test(value)) {
-        callback(new Error("密码长度6~20位，数字、字母、字符至少包含两种"));
+        callback(new Error('密码长度6~20位，数字、字母、字符至少包含两种'))
       } else {
-        if (this.form.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
+        if (this.form.checkPass !== '') {
+          this.$refs.ruleForm.validateField('checkPass')
         }
-        callback();
+        callback()
       }
-    };
-    let validatePass2 = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请再次输入新密码"));
+    }
+    const validatePass2 = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请再次输入新密码'))
       } else if (!reg.test(value)) {
-        callback(new Error("密码长度6~20位，数字、字母、字符至少包含两种"));
+        callback(new Error('密码长度6~20位，数字、字母、字符至少包含两种'))
       } else if (value !== this.form.pass) {
-        callback(new Error("密码不一致"));
+        callback(new Error('密码不一致'))
       } else {
-        callback();
+        callback()
       }
-    };
+    }
     return {
       visible: false,
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
       form: {
-        password: "",
-        pass: "",
-        checkPass: "",
+        password: '',
+        pass: '',
+        checkPass: ''
       },
       rules: {
-        password: [{ validator: validatePassword, trigger: "change" }],
-        pass: [{ validator: validatePass, trigger: "change" }],
-        checkPass: [{ validator: validatePass2, trigger: "change" }],
-      },
-    };
+        password: [{ validator: validatePassword, trigger: 'change' }],
+        pass: [{ validator: validatePass, trigger: 'change' }],
+        checkPass: [{ validator: validatePass2, trigger: 'change' }]
+      }
+    }
   },
   methods: {
     afterVisibleChange(val) {
@@ -153,35 +106,35 @@ export default {
       }
     },
     onClose() {
-      this.$refs.ruleForm.resetFields();
-      this.visible = false;
+      this.$refs.ruleForm.resetFields()
+      this.visible = false
     },
     onSubmit() {
-      this.$refs.ruleForm.validate((valid) => {
+      this.$refs.ruleForm.validate(valid => {
         if (valid) {
-          let params = {
+          const params = {
             id: this.$store.state.user.id,
             password: Base64.encode(this.form.password),
-            newPassword: Base64.encode(this.form.pass),
-          };
+            newPassword: Base64.encode(this.form.pass)
+          }
           // console.log(params);
-          modifyPassword(params).then((res) => {
+          modifyPassword(params).then(res => {
             // console.log(res);
             if (res.status === 200) {
-              this.visible = false;
-              this.$refs.ruleForm.resetFields();
-              this.$message.success("修改成功");
-              this.$parent.modifySuccessPage();
+              this.visible = false
+              this.$refs.ruleForm.resetFields()
+              this.$message.success('修改成功')
+              this.$parent.modifySuccessPage()
             }
-          });
+          })
         } else {
           // console.log("error submit!!");
-          return false;
+          return false
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .dialog {
@@ -202,7 +155,7 @@ export default {
         max-width: 620px;
         height: 67px;
         line-height: 67px;
-        background: #201ba2;
+        background: #2964ff;
         box-shadow: 0px 0px 5px 0px rgba(110, 110, 110, 0.36);
         padding-left: 20px;
         text-align: left;
