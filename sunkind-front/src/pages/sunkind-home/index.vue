@@ -3,8 +3,8 @@
     <a-layout style="height: 100vh" class="layout">
       <a-layout-header>
         <div class="logo">
-          <img src="../../assets/img/sunkind.png" alt/>
-          <img src="../../assets/img/text.png" alt/>
+          <img src="../../assets/img/sunkind.png" alt />
+          <img src="../../assets/img/text.png" alt />
         </div>
         <div id="myheader">
           <!-- <div>
@@ -15,19 +15,26 @@
           </div>-->
           <a-dropdown>
             <span>
-              <img class="img_people" src="../../assets/img/people.png" alt="头像"/>
-              <span style="vertical-align: middle; font-size: 20px; color: #1a1a1a">{{ $store.state.user.name }}</span>
+              <img
+                class="img_people"
+                src="../../assets/img/people.png"
+                alt="头像"
+              />
+              <span
+                style="vertical-align: middle; font-size: 20px; color: #1a1a1a"
+                >{{ $store.state.user.name }}</span
+              >
             </span>
             <a-menu slot="overlay">
               <a-menu-item>
                 <a @click="changePassword">
-                  <a-icon type="setting" style="margin-right: 8px"/>
+                  <a-icon type="setting" style="margin-right: 8px" />
                   修改密码
                 </a>
               </a-menu-item>
               <a-menu-item>
                 <a @click="logout">
-                  <a-icon type="poweroff" style="margin-right: 8px"/>
+                  <a-icon type="poweroff" style="margin-right: 8px" />
                   退出登录
                 </a>
               </a-menu-item>
@@ -38,11 +45,11 @@
       <a-layout-content style="height: calc(100vh - 88px)">
         <div class="sunkind-home-content">
           <a
-              v-for="(item, index) in cardList"
-              :key="index"
-              class="model-card"
-              :style="{
-              background: item.background,
+            v-for="(item, index) in cardList"
+            :key="index"
+            class="model-card"
+            :style="{
+              background: item.background
             }"
           >
             <div class="card-title">
@@ -50,27 +57,30 @@
               <span :title="item.description">{{ item.description }}</span>
               <div>
                 <a
-                    :style="{
-                    background: item.background,
+                  :style="{
+                    background: item.background
                   }"
-                    title="进入"
-                    target="_blank"
-                    @click="openUrl(item)"
+                  title="进入"
+                  target="_blank"
+                  @click="openUrl(item)"
                 >
-                  <img src="../../assets/img/in.png" alt/>
+                  <img src="../../assets/img/in.png" alt />
                 </a>
               </div>
             </div>
             <div class="card">
-              <div class="logo-img" :style="{
-                  background: item.logo_background,
-                }">
+              <div
+                class="logo-img"
+                :style="{
+                  background: item.logo_background
+                }"
+              >
                 <img
-                    v-if="item.menuIcon"
-                    :src="
+                  v-if="item.menuIcon"
+                  :src="
                     require('@/assets/systemIcon/' + item.menuIcon + '.png')
                   "
-                    alt
+                  alt
                 />
               </div>
               <div class="logo-title">
@@ -83,36 +93,36 @@
       </a-layout-content>
     </a-layout>
     <template>
-      <ChangePassword ref="changePassword"/>
-      <ModifySuccess ref="modifySuccess"/>
+      <ChangePassword ref="changePassword" />
+      <ModifySuccess ref="modifySuccess" />
     </template>
   </div>
 </template>
 
 <script>
-import {getSysMenus} from '@/services/api_user'
-import {getToken} from '@/utils/auth' // get token from cookie
-import {ChangePassword, ModifySuccess} from './components/index'
+import { getSysMenus } from "@/services/api_user";
+import { getToken } from "@/utils/auth"; // get token from cookie
+import { ChangePassword, ModifySuccess } from "./components/index";
 
 const colorList = [
   {
-    background: '#50A9FF',
-    logo_background: '#5898FD'
+    background: "#50A9FF",
+    logo_background: "#5898FD"
   },
   {
-    background: '#FE508C',
-    logo_background: '#F63A6F'
+    background: "#FE508C",
+    logo_background: "#F63A6F"
   },
   {
-    background: '#FF9437',
-    logo_background: '#FB7F31'
+    background: "#FF9437",
+    logo_background: "#FB7F31"
   }
-]
+];
 export default {
   data() {
     return {
       cardList: []
-    }
+    };
   },
   components: {
     ChangePassword,
@@ -120,42 +130,42 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      this.getSysMenusData()
-    })
+      this.getSysMenusData();
+    });
   },
   methods: {
     /** 修改密码 */
     changePassword() {
-      this.$refs.changePassword.visible = true
+      this.$refs.changePassword.visible = true;
     },
     /** 修改密码成功 */
     modifySuccessPage() {
-      this.$refs.modifySuccess.visible = true
+      this.$refs.modifySuccess.visible = true;
     },
     async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$message.success('退出成功', 1)
-      this.$router.push('/login')
+      await this.$store.dispatch("user/logout");
+      this.$message.success("退出成功", 1);
+      this.$router.push("/login");
     },
     openUrl(item) {
-      console.log(item)
-      const url = window.location.hostname // 地址栏
-      console.log(url)
-      const index = item.menuPath.indexOf(':') // 找到 ：在字符串中的位置
+      console.log(item);
+      const url = window.location.hostname; // 地址栏
+      console.log(url);
+      const index = item.menuPath.indexOf(":"); // 找到 ：在字符串中的位置
       // console.log(index);
-      const pathLength = item.menuPath.length // 路径的长度
+      const pathLength = item.menuPath.length; // 路径的长度
       // console.log(pathLength);
-      const path = url + item.menuPath.substring(index, pathLength) // 截取:后面的字符拼接
-      console.log(path)
-      const hasToken = getToken()
+      const path = url + item.menuPath.substring(index, pathLength); // 截取:后面的字符拼接
+      console.log(path);
+      const hasToken = getToken();
       if (hasToken) {
         // 注意 👉首页判定下token是否存在
         window.open(
-            'http://' + path + '?id=' + item.id + '&token=' + getToken()
-            // "_self"
-        )
+          "http://" + path + "?id=" + item.id + "&token=" + getToken()
+          // "_self"
+        );
       } else {
-        this.$router.push('/login')
+        this.$router.push("/login");
       }
       // window.open('http://' + item.menuPath + '?id=' + item.id + '&token=' + getToken(), '_blank')
     },
@@ -166,16 +176,18 @@ export default {
         if (res.status === 200) {
           for (let i = 0; i < res.data.length; i++) {
             if (i / colorList.length >= 1) {
-              res.data[i].background = colorList[i % colorList.length].background
-              res.data[i].logo_background = colorList[i % colorList.length].logo_background
+              res.data[i].background =
+                colorList[i % colorList.length].background;
+              res.data[i].logo_background =
+                colorList[i % colorList.length].logo_background;
             } else {
-              res.data[i].background = colorList[i].background
-              res.data[i].logo_background = colorList[i].logo_background
+              res.data[i].background = colorList[i].background;
+              res.data[i].logo_background = colorList[i].logo_background;
             }
           }
-          this.cardList = res.data
+          this.cardList = res.data;
         }
-      })
+      });
     }
 
     // mouseover() {
@@ -183,7 +195,7 @@ export default {
     // },
     // mouseout() {},
   }
-}
+};
 </script>
 <style scoped lang="less">
 .sunkind-home {
